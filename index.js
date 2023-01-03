@@ -11,8 +11,10 @@ const io = new Server(server);
 var users = [];
 
 app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.setHeader("ngrok-skip-browser-warning", "69420");
+    res.sendFile(__dirname + '/home.html');
 });
+
 
 
 
@@ -26,10 +28,11 @@ io.on('connection', function(socket){
             console.log('user disconnected: '+socket.username);
             console.log(users);
             io.emit('user disconnected', socket.username);
+            
         }else{
             console.log('user undeffined disconnected');
         }
-        
+        io.emit('num users', users.length);
         
     });
     socket.on('chat message', (msg) => {
@@ -49,6 +52,7 @@ io.on('connection', function(socket){
         console.log(users);
         console.log(socket.username + " was joined");
         io.emit('user connected', socket.username);
+        io.emit('num users', users.length);
     });
 });
 
