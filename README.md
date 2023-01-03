@@ -1,4 +1,4 @@
-# chat-with-node-js-and-socket-io
+# Chat 
 this project is a simple chat with node js and socket.io
-#starting
+# Starting
 install all the dependencies and run the index.js file with node
